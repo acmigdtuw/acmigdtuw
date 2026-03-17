@@ -103,7 +103,7 @@ export default function Navbar() {
         {/* Logo / brand */}
         <a href="#hero" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', flexShrink: 0 }}>
           <img
-            src="/acm-logo.svg"
+            src={`${import.meta.env.BASE_URL}acm-logo.svg`}
             alt="ACM"
             style={{
               height: '30px', width: 'auto',
