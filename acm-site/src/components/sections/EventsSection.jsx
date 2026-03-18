@@ -14,8 +14,8 @@ const events = [
     objective: 'Explored technical strategies to identify and mitigate online hostility using AI systems.',
     participants: '25+',
     images: [
-      '/events/ai-for-social-good-1.jpg',
-      '/events/ai-for-social-good-2.jpg'
+      'events/ai-for-social-good-1.jpg',
+      'events/ai-for-social-good-2.jpg'
     ]
   },
   {
@@ -26,7 +26,7 @@ const events = [
     desc: 'Hands-on workshop exploring AR/VR technologies and building real-world immersive experiences.',
     objective: 'Introduced students to AR/VR tools and guided them in building practical immersive applications.',
     participants: '30+',
-    images: ['/events/acmxleanin.jpg']
+    images: ['events/acmxleanin.jpg']
   },
   {
     tag: 'Event',
@@ -37,8 +37,8 @@ const events = [
     objective: 'Recognised contributions and performance of participants in the ACM Winter Workshop program.',
     participants: '30+',
     images: [
-      '/events/winter-workshop-fel-1.jpg',
-      '/events/winter-workshop-fel-2.jpg'
+      'events/winter-workshop-fel-1.jpg',
+      'events/winter-workshop-fel-2.jpg'
     ]
   },
   {
@@ -49,7 +49,7 @@ const events = [
     desc: 'Structured program covering DSA, projects, resume building, and mentorship.',
     objective: 'Strengthened technical foundations through guided mentorship, DSA practice, and career preparation.',
     participants: '40+',
-    images: ['/events/winter-workshop-1.png']
+    images: ['events/winter-workshop-1.png']
   },
   {
     tag: 'Event',
@@ -59,7 +59,7 @@ const events = [
     desc: 'Virtual orientation session introducing ACM and opportunities.',
     objective: 'Introduced ACM initiatives, membership benefits, and engagement opportunities to new students.',
     participants: '40+',
-    images: ['/events/online-orientation.jpeg']
+    images: ['events/online-orientation.jpeg']
   },
   {
     tag: 'Event',
@@ -70,8 +70,8 @@ const events = [
     objective: 'Built awareness about ACM activities and encouraged student participation through engagement.',
     participants: '40+',
     images: [
-      '/events/offline-orientation-1.jpg',
-      '/events/offline-orientation-2.jpg'
+      'events/offline-orientation-1.jpg',
+      'events/offline-orientation-2.jpg'
     ]
   },
   {
@@ -82,7 +82,7 @@ const events = [
     desc: 'Creative competition using AI tools like DALL·E and Gemini to design engaging comic strips.',
     objective: 'Encouraged creative storytelling using generative AI tools.',
     participants: '20+',
-    images: ['/events/comic-creation.jpeg']
+    images: ['events/comic-creation.jpeg']
   },
   {
     tag: 'Talk',
@@ -92,7 +92,7 @@ const events = [
     desc: 'Session on cybersecurity careers, certifications, and building industry-ready skillsets.',
     objective: 'Provided insights into cybersecurity careers and industry expectations.',
     participants: '15+',
-    images: ['/events/alumini-connect.jpeg']
+    images: ['events/alumini-connect.jpeg']
   },
   {
     tag: 'Talk',
@@ -103,8 +103,8 @@ const events = [
     objective: 'Explored real-world applications and future trends in generative AI.',
     participants: '350+',
     images: [
-      '/events/future-of-genai-1.jpg',
-      '/events/future-of-genai-2.jpg'
+      'events/future-of-genai-1.jpg',
+      'events/future-of-genai-2.jpg'
     ]
   },
   {
@@ -364,7 +364,7 @@ export default function EventsSection() {
               {selectedEvent.images.map((img, i) => (
                 <img
                   key={i}
-                  src={img}
+                  src={`${import.meta.env.BASE_URL}${img}`}
                   style={{
                     width: '100%',
                     height: '120px',
