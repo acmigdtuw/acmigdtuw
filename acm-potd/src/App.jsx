@@ -9,7 +9,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <Analytics />
       <main>
         <Routes>
           <Route path="/"                                    element={<Home />} />
@@ -17,6 +16,7 @@ export default function App() {
           <Route path="/event/:eventId/day/:day"             element={<ProblemDetail />} />
         </Routes>
       </main>
+      <Analytics />
     </BrowserRouter>
   )
 }
