@@ -48,5 +48,79 @@
       "solutionLink": "https://www.notion.so/Trapping-Rain-Water-ebf00411d52182619d130122adfc5c46?source=copy_link",
       "status": "published"
     }
+  ],
+  "upcomingProblems": [
+    {
+      "id": "sp26-b-4",
+      "eventId": "spring-2026",
+      "phase": "beginner",
+      "day": 3,
+      "date": "2026-03-24",
+      "title": "Best Time to Buy and Sell Stock",
+      "difficulty": "Easy",
+      "problemLink": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+      "solutionLink": "",
+      "status": "draft"
+    }
+    ,{
+      "id": "sp26-i-4",
+      "eventId": "spring-2026",
+      "phase": "intermediate",
+      "day": 3,
+      "date": "2026-03-24",
+      "title": "Sort Colors",
+      "difficulty": "Intermediate",
+      "problemLink": "https://leetcode.com/problems/sort-colors/",
+      "solutionLink": "",
+      "status": "draft"
+    }
+    ,{
+      "id": "sp26-a-4",
+      "eventId": "spring-2026",
+      "phase": "advanced",
+      "day": 3,
+      "date": "2026-03-24",
+      "title": "Largest Rectangle in Histogram",
+      "difficulty": "Hard",
+      "problemLink": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
+      "solutionLink": "",
+      "status": "draft"
+    }
+    ,{
+      "id": "sp26-b-5",
+      "eventId": "spring-2026",
+      "phase": "beginner",
+      "day": 4,
+      "date": "2026-03-25",
+      "title": "Missing Number",
+      "difficulty": "Easy",
+      "problemLink": "https://leetcode.com/problems/missing-number/",
+      "solutionLink": "",
+      "status": "draft"
+    }
+    ,{
+      "id": "sp26-i-5",
+      "eventId": "spring-2026",
+      "phase": "intermediate",
+      "day": 4,
+      "date": "2026-03-25",
+      "title": "Two Sum II – Input Array Is Sorted",
+      "difficulty": "Intermediate",
+      "problemLink": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/",
+      "solutionLink": "",
+      "status": "draft"
+    }
+    ,{
+      "id": "sp26-a-5",
+      "eventId": "spring-2026",
+      "phase": "advanced",
+      "day": 4,
+      "date": "2026-03-25",
+      "title": "Count of Smaller Numbers After Self",
+      "difficulty": "Hard",
+      "problemLink": "https://leetcode.com/problems/count-of-smaller-numbers-after-self/",
+      "solutionLink": "",
+      "status": "draft"
+    }
   ]
 }
