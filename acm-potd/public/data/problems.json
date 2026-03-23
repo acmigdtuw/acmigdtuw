@@ -83,11 +83,7 @@
       "problemLink": "https://leetcode.com/problems/first-missing-positive/description/",
       "solutionLink": "https://www.notion.so/First-Missing-Positive-32b00411d52180c2b35dd193b5e97504?source=copy_link",
       "status": "published"
-    }
-  ],
-
-  
-  "upcomingProblems": [
+    },
     {
       "id": "sp26-b-4",
       "eventId": "spring-2026",
@@ -97,8 +93,8 @@
       "title": "Best Time to Buy and Sell Stock",
       "difficulty": "Easy",
       "problemLink": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
-      "solutionLink": "",
-      "status": "draft"
+      "solutionLink": "https://www.notion.so/Best-Time-to-Buy-and-Sell-Stock-32c00411d52180689012e9553fa0f62b?source=copy_link",
+      "status": "published"
     }
     ,{
       "id": "sp26-i-4",
@@ -109,8 +105,8 @@
       "title": "Sort Colors",
       "difficulty": "Intermediate",
       "problemLink": "https://leetcode.com/problems/sort-colors/",
-      "solutionLink": "",
-      "status": "draft"
+      "solutionLink": "https://www.notion.so/Sort-Colors-Dutch-National-Flag-32c00411d521808ca27fddff621205ac?source=copy_link",
+      "status": "published"
     }
     ,{
       "id": "sp26-a-4",
@@ -121,10 +117,14 @@
       "title": "Largest Rectangle in Histogram",
       "difficulty": "Hard",
       "problemLink": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
-      "solutionLink": "",
-      "status": "draft"
+      "solutionLink": "https://www.notion.so/Largest-Rectangle-in-Histogram-32c00411d52180d3962ec0e7fabd2900?source=copy_link",
+      "status": "published"
     }
-    ,{
+  ],
+
+  
+  "upcomingProblems": [
+    {
       "id": "sp26-b-5",
       "eventId": "spring-2026",
       "phase": "beginner",
@@ -133,7 +133,7 @@
       "title": "Missing Number",
       "difficulty": "Easy",
       "problemLink": "https://leetcode.com/problems/missing-number/",
-      "solutionLink": "",
+      "solutionLink": "https://www.notion.so/Missing-Number-32c00411d5218069b9d8c695f6649dc4?source=copy_link",
       "status": "draft"
     }
     ,{
@@ -145,7 +145,7 @@
       "title": "Two Sum II – Input Array Is Sorted",
       "difficulty": "Intermediate",
       "problemLink": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/",
-      "solutionLink": "",
+      "solutionLink": "https://www.notion.so/Two-Sum-II-Input-Array-Is-Sorted-32c00411d52180e491d4da349892965e?source=copy_link",
       "status": "draft"
     }
     ,{
@@ -157,7 +157,7 @@
       "title": "Count of Smaller Numbers After Self",
       "difficulty": "Hard",
       "problemLink": "https://leetcode.com/problems/count-of-smaller-numbers-after-self/",
-      "solutionLink": "",
+      "solutionLink": "https://www.notion.so/Count-of-Smaller-Numbers-After-Self-32c00411d52180d5a607e1cefc8861e9?source=copy_link",
       "status": "draft"
     }
   ]
