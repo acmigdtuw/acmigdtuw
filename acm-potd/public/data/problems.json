@@ -155,11 +155,7 @@
       "problemLink": "https://leetcode.com/problems/count-of-smaller-numbers-after-self/",
       "solutionLink": "https://www.notion.so/Count-of-Smaller-Numbers-After-Self-32c00411d52180d5a607e1cefc8861e9?source=copy_link",
       "status": "published"
-    }
-  ],
-
-  
-  "upcomingProblems": [
+    },
       {
       "id": "sp26-b-5",
       "eventId": "spring-2026",
@@ -196,5 +192,9 @@
       "solutionLink": "https://www.notion.so/Sliding-Window-Maximum-32e00411d521809eb845c7d03583b6aa?source=copy_link",
       "status": "published"
     }
+  ],
+
+  
+  "upcomingProblems": [
   ]
 }
