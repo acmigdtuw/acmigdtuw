@@ -160,6 +160,41 @@
 
   
   "upcomingProblems": [
-
+      {
+      "id": "sp26-b-5",
+      "eventId": "spring-2026",
+      "phase": "beginner",
+      "day": 5,
+      "date": "2026-03-26",
+      "title": "Move Zeroes",
+      "difficulty": "Easy",
+      "problemLink": "https://leetcode.com/problems/move-zeroes/",
+      "solutionLink": "https://www.notion.so/Move-Zeroes-32e00411d52180568e12f53a642e4b78?source=copy_link",
+      "status": "published"
+    }
+    ,{
+      "id": "sp26-i-5",
+      "eventId": "spring-2026",
+      "phase": "intermediate",
+      "day": 5,
+      "date": "2026-03-25",
+      "title": "Product of Array Except Self",
+      "difficulty": "Medium",
+      "problemLink": "https://leetcode.com/problems/product-of-array-except-self/",
+      "solutionLink": "https://www.notion.so/Product-of-Array-Except-Self-32e00411d521801ba980eb7b9c5bb3d2?source=copy_link",
+      "status": "published"
+    }
+    ,{
+      "id": "sp26-a-5",
+      "eventId": "spring-2026",
+      "phase": "advanced",
+      "day": 5,
+      "date": "2026-03-25",
+      "title": "Sliding Window Maximum",
+      "difficulty": "Hard",
+      "problemLink": "https://leetcode.com/problems/sliding-window-maximum/",
+      "solutionLink": "https://www.notion.so/Sliding-Window-Maximum-32e00411d521809eb845c7d03583b6aa?source=copy_link",
+      "status": "published"
+    }
   ]
 }
