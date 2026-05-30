@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script type="text/javascript">
-      // Store the path for the app to restore
-      sessionStorage.redirect = location.pathname;
+      // Redirect to home page on any 404
+      // Replace the history so back button doesn't loop
+      window.location.replace('/acmigdtuw/');
     </script>
-    <meta http-equiv="refresh" content="0;url=/acmigdtuw/">
   </head>
   <body>
   </body>
