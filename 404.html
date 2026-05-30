@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Redirecting...</title>
-    <script type="text/javascript">
-      // Redirect to home page on any 404
-      // Replace the history so back button doesn't loop
-      window.location.replace('/acmigdtuw/');
+    <script>
+      const redirect = location.pathname + location.search + location.hash;
+      sessionStorage.redirect = redirect;
+      location.replace('/acmigdtuw/');
     </script>
   </head>
   <body>
+    Redirecting...
   </body>
 </html>
