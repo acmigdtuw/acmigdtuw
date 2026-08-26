@@ -1,10 +1,52 @@
  import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import potdImage from '../../assets/potd.jpeg'
+import recap1Image from '../../assets/recap1.jpg'
+import recap4Image from '../../assets/recap4.jpg'
+import sourceryImage from '../../assets/sourcery.jpeg'
+import summerInternshipImage from '../../assets/summer-intern-26-poster.jpeg'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const getEventImageSrc = (image) => image.startsWith('http') || image.startsWith('/')
+  ? image
+  : `${import.meta.env.BASE_URL}${image}`
+
 const events = [
+  {
+    tag: 'Flagship Program',
+    tagColor: '#00c4e0',
+    date: 'Jun – Jul 2026',
+    title: 'ACM Research Summer Internship',
+    desc: 'A flagship summer research internship designed to help students explore meaningful technical problems through guided, hands-on work.',
+    objective: 'Connected students with research-oriented learning, mentorship, and practical project experience during the summer break.',
+    participants: '70+',
+    images: [summerInternshipImage],
+    link: '/acmigdtuw/summer-workshop-2026',
+    linkLabel: 'Explore Internship'
+  },
+  {
+    tag: 'Challenge',
+    tagColor: '#0082aa',
+    date: 'Mar – Apr 2026',
+    title: 'POTD: 30-Day LeetCode Challenge',
+    desc: 'A consistency-first coding challenge where students solved one LeetCode problem each day for 30 days.',
+    objective: 'Built a sustainable daily problem-solving habit through regular practice and steady progress, with consistency as the only requirement.',
+    participants: '40+',
+    images: [potdImage]
+  },
+  {
+    tag: 'Open Source',
+    tagColor: '#005f7f',
+    date: 'Apr 2026',
+    title: 'Sourcery',
+    desc: 'A contribution sprint where students worked on real-world projects under the guidance of project maintainers.',
+    objective: 'Gave students practical experience solving meaningful problems, collaborating with maintainers, and contributing beyond tutorials and toy exercises.',
+    participants: '25+',
+    images: [sourceryImage]
+  },
   {
     tag: 'Workshop',
     tagColor: '#00c4e0',
@@ -115,7 +157,7 @@ const events = [
     desc: 'Final evaluation and recognition of research internship projects with awards and certifications.',
     objective: 'Showcased research outcomes and recognized student achievements.',
     participants: '30+',
-    images: []  
+    images: [recap1Image, recap4Image]
   },
   // {
   //   tag: 'Workshop',
@@ -153,6 +195,20 @@ export default function EventsSection() {
   const sectionRef = useRef()
   const scrollRef = useRef()
   const [selectedEvent, setSelectedEvent] = useState(null)
+
+  useEffect(() => {
+    if (!selectedEvent) return
+
+    const previousHtmlOverflow = document.documentElement.style.overflow
+    const previousBodyOverflow = document.body.style.overflow
+    document.documentElement.style.overflow = 'hidden'
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.documentElement.style.overflow = previousHtmlOverflow
+      document.body.style.overflow = previousBodyOverflow
+    }
+  }, [selectedEvent])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -313,6 +369,22 @@ export default function EventsSection() {
                 </div>
                 <h3 style={{ color: '#fff' }}>{ev.title}</h3>
                 <p style={{ color: 'rgba(255,255,255,0.5)' }}>{ev.desc}</p>
+                {ev.link && (
+                  <a
+                    href={ev.link}
+                    onClick={(e) => e.stopPropagation()}
+                    style={{
+                      display: 'inline-flex',
+                      marginTop: '18px',
+                      color: '#00c4e0',
+                      fontSize: '12px',
+                      fontWeight: 700,
+                      textDecoration: 'none'
+                    }}
+                  >
+                    {ev.linkLabel} →
+                  </a>
+                )}
               </div>
             ))}
           </div>
@@ -320,7 +392,7 @@ export default function EventsSection() {
       </div>
 
       {/* Modal */}
-      {selectedEvent && (
+      {selectedEvent && createPortal(
         <div
           onClick={() => setSelectedEvent(null)}
           style={{
@@ -328,7 +400,7 @@ export default function EventsSection() {
             inset: 0,
             background: 'rgba(4,8,15,0.85)',
             backdropFilter: 'blur(10px)',
-            zIndex: 1000,
+            zIndex: 1100,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -336,46 +408,110 @@ export default function EventsSection() {
           }}
         >
           <div
+            className="event-modal-content"
             onClick={(e) => e.stopPropagation()}
             style={{
               display: 'grid',
-              gridTemplateColumns: '1.2fr 1fr',
-              gap: '32px',
-              maxWidth: '1000px',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 360px), 1fr))',
+              gap: 'clamp(32px, 5vw, 72px)',
+              maxWidth: '1100px',
               width: '100%',
               background: 'rgba(255,255,255,0.03)',
               border: '1px solid rgba(255,255,255,0.07)',
-              borderRadius: '12px',
-              padding: '32px'
+              borderRadius: '20px',
+              padding: 'clamp(32px, 5vw, 64px)',
+              maxHeight: 'calc(100vh - 80px)',
+              overflowY: 'auto',
+              position: 'relative'
             }}
           >
-            <div>
-              <h2 style={{ color: '#fff' }}>{selectedEvent.title}</h2>
-              <p style={{ color: 'rgba(255,255,255,0.55)' }}>{selectedEvent.desc}</p>
-              <p style={{ color: '#fff' }}>
+            <button
+              type="button"
+              onClick={() => setSelectedEvent(null)}
+              aria-label="Close event details"
+              title="Close event details"
+              style={{
+                position: 'absolute',
+                top: '18px',
+                right: '18px',
+                width: '36px',
+                height: '36px',
+                display: 'grid',
+                placeItems: 'center',
+                padding: 0,
+                border: '1px solid rgba(0,196,224,0.35)',
+                borderRadius: '50%',
+                background: 'rgba(0,196,224,0.08)',
+                color: '#00c4e0',
+                cursor: 'pointer'
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </button>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <h2 style={{ color: '#fff', fontWeight: 800, margin: '0 0 28px', lineHeight: 1.1 }}>
+                {selectedEvent.title}
+              </h2>
+              <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start', marginBottom: '32px' }}>
+                <span style={{ width: '3px', minHeight: '24px', background: '#00c4e0', borderRadius: '3px', flexShrink: 0 }} />
+                <p style={{ color: 'rgba(255,255,255,0.62)', margin: 0, lineHeight: 1.7 }}>
+                  {selectedEvent.desc}
+                </p>
+              </div>
+              <p style={{ color: '#fff', margin: '0 0 32px', lineHeight: 1.7 }}>
                 <strong>Objective:</strong> {selectedEvent.objective}
               </p>
-              <p style={{ color: 'rgba(255,255,255,0.45)' }}>
+              <p style={{ color: '#00c4e0', margin: 0, display: 'flex', alignItems: 'center', gap: '10px', fontWeight: 700 }}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" style={{ color: '#00c4e0', flexShrink: 0 }}>
+                  <circle cx="9" cy="8" r="3" stroke="currentColor" strokeWidth="1.7" />
+                  <circle cx="17" cy="9" r="2.5" stroke="currentColor" strokeWidth="1.7" />
+                  <path d="M3.5 19c.5-3 2.3-4.5 5.5-4.5s5 1.5 5.5 4.5M14 15.2c.8-.5 1.7-.7 2.8-.7 2.3 0 3.6 1.4 3.9 3.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+                </svg>
                 {selectedEvent.participants} attendees
               </p>
+              {selectedEvent.link && (
+                <a
+                  href={selectedEvent.link}
+                  style={{
+                    display: 'inline-flex',
+                    alignSelf: 'flex-start',
+                    marginTop: '28px',
+                    padding: '11px 18px',
+                    border: '1px solid rgba(0,196,224,0.5)',
+                    borderRadius: '999px',
+                    color: '#00c4e0',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    textDecoration: 'none'
+                  }}
+                >
+                  {selectedEvent.linkLabel} →
+                </a>
+              )}
             </div>
 
-            <div style={{ display: 'grid', gap: '12px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '18px', justifyContent: 'center' }}>
               {selectedEvent.images.map((img, i) => (
                 <img
                   key={i}
-                  src={`${import.meta.env.BASE_URL}${img}`}
+                  src={getEventImageSrc(img)}
+                  alt={`${selectedEvent.title} event photograph ${i + 1}`}
                   style={{
                     width: '100%',
-                    height: '120px',
-                    objectFit: 'cover',
-                    borderRadius: '8px'
+                    height: 'auto',
+                    maxHeight: '360px',
+                    objectFit: 'contain',
+                    borderRadius: '12px',
+                    display: 'block'
                   }}
                 />
               ))}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   )
