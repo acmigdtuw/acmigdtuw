@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react'
+import { potdData, EVENT_START_DATE } from '../data/potdData'
+import { springPotdData, EVENT_START_DATE as SPRING_START_DATE } from '../data/springPotdData'
+import { getScheduledProblems } from '../lib/scheduler'
 
 export function useProblems() {
   const [data,    setData]    = useState(null)
@@ -6,10 +9,49 @@ export function useProblems() {
   const [error,   setError]   = useState(null)
 
   useEffect(() => {
-    fetch('/data/problems.json')
-      .then(r => { if (!r.ok) throw new Error('Failed to load problems'); return r.json() })
-      .then(d => { setData(d); setLoading(false) })
-      .catch(e => { setError(e.message); setLoading(false) })
+    const updateProblems = () => {
+      try {
+        const processedProblems = [
+          ...getScheduledProblems(springPotdData, SPRING_START_DATE),
+          ...getScheduledProblems(potdData.filter(problem => problem.eventId === 'autumn-2026-cf'), EVENT_START_DATE),
+        ];
+
+        setData({
+          events: [
+            {
+              id: "spring-2026",
+              name: "Spring 2026",
+              isActive: false,
+              phases: {
+                beginner:     { startDate: SPRING_START_DATE, endDate: "2026-04-25T23:59:59Z" },
+                intermediate: { startDate: SPRING_START_DATE, endDate: "2026-04-25T23:59:59Z" },
+                advanced:     { startDate: SPRING_START_DATE, endDate: "2026-04-25T23:59:59Z" }
+              }
+            },
+            {
+              id: "autumn-2026-cf",
+              name: "Autumn 2026",
+              isActive: true,
+              phases: {
+                beginner:     { startDate: EVENT_START_DATE, endDate: "2026-12-01T23:59:59Z" },
+                intermediate: { startDate: EVENT_START_DATE, endDate: "2026-12-01T23:59:59Z" },
+                advanced:     { startDate: EVENT_START_DATE, endDate: "2026-12-01T23:59:59Z" }
+              }
+            }
+          ],
+          problems: processedProblems
+        });
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    updateProblems();
+    const interval = setInterval(updateProblems, 10000);
+
+    return () => clearInterval(interval);
   }, [])
 
   // Returns the active event, or the first one if none is flagged active

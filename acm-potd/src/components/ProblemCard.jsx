@@ -22,8 +22,9 @@ function formatDate(dateStr) {
   })
 }
 
-export default function ProblemCard({ problem, showPhase = false }) {
-  const { eventId, phase, day, date, title, problemLink, solutionLink } = problem
+export default function ProblemCard({ problem, showPhase = false, hideViewSolution = false }) {
+  const { eventId, phase, day, date, title, problemLink, solutionLink, platform, rating } = problem
+  const showSolution = !hideViewSolution && eventId !== 'autumn-2026-cf'
   const today    = isToday(date)
   const colors   = PHASE_COLORS[phase] ?? PHASE_COLORS.beginner
 
@@ -64,6 +65,11 @@ export default function ProblemCard({ problem, showPhase = false }) {
           <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--c-teal)' }}>
             Day {day}
           </span>
+          {platform && (
+            <span style={{ fontSize: 11, color: 'var(--c-muted)' }}>
+              {platform}{rating ? ` · ${rating}` : ''}
+            </span>
+          )}
         </div>
 
         {/* Date + detail link */}
@@ -78,7 +84,7 @@ export default function ProblemCard({ problem, showPhase = false }) {
             onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.2)'}
             aria-label={`Detail view for ${title}`}
           >
-            
+            ↗
           </Link>
         </div>
       </div>
@@ -104,15 +110,15 @@ export default function ProblemCard({ problem, showPhase = false }) {
         >
           Solve Problem →
         </a>
-        <a
-          href={solutionLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="potd-btn-secondary"
-          aria-label={`View Solution: ${title}`}
-        >
-          View Solution ↗
-        </a>
+        {showSolution && (
+          <Link
+            to={`/event/${eventId}/${phase}/day/${day}`}
+            className="potd-btn-secondary"
+            aria-label={`View Solution: ${title}`}
+          >
+            View Solution ↗
+          </Link>
+        )}
       </div>
     </article>
   )
